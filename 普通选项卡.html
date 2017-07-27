@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		    *{
+		    	padding: 0;margin: 0;
+		    }
+			section{overflow: hidden;}
+			input{
+				float: left;
+				width: 100px;
+				height: 30px;
+			}
+			li{
+				width: 298px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				border: 1px solid salmon;
+				display: none;
+			}
+			.show{
+				display: block;
+			}
+			.active{
+				background: sandybrown;
+			}
+		</style>
+		<script type="text/javascript">
+	    //创建类
+		class Tab{
+			//属性
+			constructor(){				
+				this.aInp=document.querySelectorAll("#box input");
+				this.aDiv=document.querySelectorAll("#box li");			
+			};
+			//show()方法
+			show(){			
+				var _this=this;
+				for(let i=0;i<this.aInp.length;i++){
+					this.aInp[i].onclick=function(){
+						_this.fn(i);
+					};
+				}
+			};
+			//
+			fn(i){
+				console.log(this)
+				for(var j=0;j<this.aDiv.length;j++){
+					this.aInp[j].className='';
+					this.aDiv[j].className='';
+				}
+				this.aInp[i].className='active';
+				this.aDiv[i].className='show';				
+			}
+		}
+		window.onload=function(){
+			var  n=new Tab();
+			n.show()
+		}
+	</script>
+	</head>
+	<body>
+		<div id="box">
+			<section>
+				<input type="button" value="选项卡1" class="active">
+				<input type="button" value="选项卡2">
+				<input type="button" value="选项卡3">
+			</section>			
+			<ul>
+				<li class="show">11</li>
+				<li>22</li>
+				<li>33</li>
+			</ul>
+		</div>
+	</body>
+	
+</html>
